@@ -30,6 +30,22 @@ def login_post():
     else:
         return 'Invalid username or password'
 
+@app.route('/register', methods=['POST'])
+def register_post():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    first_name = request.form.get('first_name')
+    second_name = request.form.get('second_name')
+    role = request.form.get('role')
+    status = request.form.get('status')
+
+    cursor = mysql.connection.cursor()
+    cursor.execute(''' INSERT INTO users (username, password, first_name, second_name, role, status) VALUES (%s, %s, %s, %s, %s, %s) ''', (username, password, first_name, second_name, role, status))
+    mysql.connection.commit()
+    cursor.close()
+
+    return redirect(url_for('login'))
+
 @app.route('/home')
 def home():
     return render_template('home.html')
