@@ -48,10 +48,6 @@ def register():
     else:
         return render_template('register.html')
 
-@app.route('/home')
-def home():
-    return render_template('home.html')
-
 @app.route('/logout')
 def logout():
     # Add your logout logic here
