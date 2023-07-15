@@ -57,18 +57,23 @@ def logout():
     # Add your logout logic here
     return redirect(url_for('login'))
 
-@app.route('/projects')
-def projects():
-    return render_template('projects.html')
+@app.route('/home')
+def home():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    return render_template('home.html')
 
 @app.route('/add_project', methods=['GET', 'POST'])
 def add_project():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
     if request.method == 'POST':
         title = request.form.get('title')
         description = request.form.get('description')
         author_role = request.form.get('author_role')
         author_tone = request.form.get('author_tone')
-        username = session['username']  # Assuming you have a session variable for the logged in user
+        username = session['username']
         initial_prompt = request.form.get('initial_prompt')
 
         cursor = mysql.connection.cursor()
@@ -79,6 +84,5 @@ def add_project():
         return redirect(url_for('projects'))
     else:
         return render_template('add_project.html')
-
 if __name__ == '__main__':
     app.run(debug=True)
