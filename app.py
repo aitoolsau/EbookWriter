@@ -6,8 +6,8 @@ app = Flask(__name__)
 # MySQL configurations
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
-app.config['MYSQL_DB'] = 'MyDB'
+app.config['MYSQL_PASSWORD'] = 'Bdm#110044#'
+app.config['MYSQL_DB'] = 'aitools_ebookwriter'
 
 mysql = MySQL(app)
 
