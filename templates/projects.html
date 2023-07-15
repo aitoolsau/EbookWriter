@@ -7,21 +7,21 @@
     {% include 'header.html' %}
     <h1>Projects Page</h1>
     <button onclick="location.href='add_project'">Add Project</button>
-    <table style="width:100%; border: 1px solid white; margin-top: 20px;">
-        <tr style="background-color: #1abc9c; color: white;">
-            <th>Title</th>
-            <th>Description</th>
-            <th>Author Role</th>
-            <th>Author Tone</th>
-            <th>Initial Prompt</th>
+    <table style="width:100%; border: 1px solid #ddd; margin-top: 20px; border-collapse: collapse;">
+        <tr style="background-color: #f2f2f2;">
+            <th style="padding: 15px; text-align: left;">Title</th>
+            <th style="padding: 15px; text-align: left;">Description</th>
+            <th style="padding: 15px; text-align: left;">Author Role</th>
+            <th style="padding: 15px; text-align: left;">Author Tone</th>
+            <th style="padding: 15px; text-align: left;">Initial Prompt</th>
         </tr>
         {% for project in projects %}
-        <tr style="border: 1px solid white;">
-            <td>{{ project.Title }}</td>
-            <td>{{ project.Description }}</td>
-            <td>{{ project.AuthorRole }}</td>
-            <td>{{ project.AuthorTone }}</td>
-            <td>{{ project.InitialPrompt }}</td>
+        <tr>
+            <td style="padding: 15px; text-align: left;">{{ project.Title }}</td>
+            <td style="padding: 15px; text-align: left;">{{ project.Description }}</td>
+            <td style="padding: 15px; text-align: left;">{{ project.AuthorRole }}</td>
+            <td style="padding: 15px; text-align: left;">{{ project.AuthorTone }}</td>
+            <td style="padding: 15px; text-align: left;">{{ project.InitialPrompt }}</td>
         </tr>
         {% endfor %}
     </table>
