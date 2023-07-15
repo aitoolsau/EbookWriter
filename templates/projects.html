@@ -7,8 +7,8 @@
     {% include 'header.html' %}
     <h1>Projects Page</h1>
     <button onclick="location.href='add_project'">Add Project</button>
-    <table>
-        <tr>
+    <table style="width:100%; border: 1px solid white; margin-top: 20px;">
+        <tr style="background-color: #1abc9c; color: white;">
             <th>Title</th>
             <th>Description</th>
             <th>Author Role</th>
@@ -16,7 +16,7 @@
             <th>Initial Prompt</th>
         </tr>
         {% for project in projects %}
-        <tr>
+        <tr style="border: 1px solid white;">
             <td>{{ project.Title }}</td>
             <td>{{ project.Description }}</td>
             <td>{{ project.AuthorRole }}</td>
