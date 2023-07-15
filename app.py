@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Replace 'your_secret_key' with your actual secret key
+app.secret_key = 'zxcveqrgvvZXCvbzxcvb'  # Replace 'your_secret_key' with your actual secret key
 
 # MySQL configurations
 app.config['MYSQL_HOST'] = 'localhost'
@@ -88,7 +88,7 @@ def projects():
     if 'username' not in session:
         return redirect(url_for('login'))
 
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor = mysql.connection.cursor(MySQL.cursors.DictCursor)
     cursor.execute(''' SELECT * FROM projects WHERE Username = %s ''', (session['username'],))
     projects = cursor.fetchall()
     cursor.close()
