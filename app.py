@@ -24,6 +24,7 @@ def login():
         cursor.close()
 
         if user:
+            session['username'] = username  # Store the username in the session
             return redirect(url_for('home'))
         else:
             return 'Invalid username or password'
