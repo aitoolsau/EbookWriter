@@ -17,11 +17,11 @@
         </tr>
         {% for project in projects %}
         <tr>
-            <td style="padding: 15px; text-align: left;">{{ project[1] }}</td>
-            <td style="padding: 15px; text-align: left;">{{ project[2] }}</td>
-            <td style="padding: 15px; text-align: left;">{{ project[3] }}</td>
-            <td style="padding: 15px; text-align: left;">{{ project[4] }}</td>
-            <td style="padding: 15px; text-align: left;">{{ project[6] }}</td>
+            <td style="padding: 15px; text-align: left;">{{ project.Title }}</td>
+            <td style="padding: 15px; text-align: left;">{{ project.Description }}</td>
+            <td style="padding: 15px; text-align: left;">{{ project.AuthorRole }}</td>
+            <td style="padding: 15px; text-align: left;">{{ project.AuthorTone }}</td>
+            <td style="padding: 15px; text-align: left;">{{ project.InitialPrompt }}</td>
         </tr>
         {% endfor %}
     </table>
