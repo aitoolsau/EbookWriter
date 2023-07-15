@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Project</title>
+</head>
+<body>
+    {% include 'header.html' %}
+    <h1>Add Project</h1>
+    <form action="/add_project" method="post">
+        <label for="project_name">Project Name:</label><br>
+        <input type="text" id="project_name" name="project_name"><br>
+        <label for="description">Description:</label><br>
+        <input type="text" id="description" name="description"><br>
+        <label for="status">Status:</label><br>
+        <input type="text" id="status" name="status"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

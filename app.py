@@ -61,5 +61,21 @@ def logout():
 def projects():
     return render_template('projects.html')
 
+@app.route('/add_project', methods=['GET', 'POST'])
+def add_project():
+    if request.method == 'POST':
+        project_name = request.form.get('project_name')
+        description = request.form.get('description')
+        status = request.form.get('status')
+
+        cursor = mysql.connection.cursor()
+        cursor.execute(''' INSERT INTO projects (project_name, description, status) VALUES (%s, %s, %s) ''', (project_name, description, status))
+        mysql.connection.commit()
+        cursor.close()
+
+        return redirect(url_for('projects'))
+    else:
+        return render_template('add_project.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
