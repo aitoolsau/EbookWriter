@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Replace 'your_secret_key' with your actual secret key
 
 # MySQL configurations
 app.config['MYSQL_HOST'] = 'localhost'
