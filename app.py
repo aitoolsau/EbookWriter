@@ -88,7 +88,7 @@ def projects():
     if 'username' not in session:
         return redirect(url_for('login'))
 
-    cursor = mysql.connection.cursor()
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute(''' SELECT * FROM projects WHERE Username = %s ''', (session['username'],))
     projects = cursor.fetchall()
     cursor.close()
