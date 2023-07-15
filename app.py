@@ -91,8 +91,23 @@ def register_post():
     cursor.execute(''' INSERT INTO users (username, password, first_name, second_name, role, status) VALUES (%s, %s, %s, %s, %s, %s) ''', (username, password, first_name, second_name, role, status))
     mysql.connection.commit()
     cursor.close()
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
 
-    return redirect(url_for('login'))
+        cursor = mysql.connection.cursor()
+        cursor.execute(''' SELECT * FROM users WHERE username = %s AND password = %s ''', (username, password))
+        user = cursor.fetchone()
+        cursor.close()
+
+        if user:
+            return redirect(url_for('home'))
+        else:
+            return 'Invalid username or password'
+    else:
+        return render_template('login.html')
 
 @app.route('/home')
 def home():
