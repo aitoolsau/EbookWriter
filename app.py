@@ -93,6 +93,8 @@ def projects():
     projects = cursor.fetchall()
     cursor.close()
 
+    print("Projects fetched from database: ", projects)  # Debug print statement
+
     return render_template('projects.html', projects=projects)
 if __name__ == '__main__':
     app.run(debug=True)
