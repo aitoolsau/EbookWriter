@@ -80,5 +80,11 @@ def add_project():
         return redirect(url_for('projects'))
     else:
         return render_template('add_project.html')
+
+@app.route('/projects')
+def projects():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    return render_template('projects.html')
 if __name__ == '__main__':
     app.run(debug=True)
