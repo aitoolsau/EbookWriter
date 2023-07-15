@@ -75,7 +75,7 @@ def add_project():
         initial_prompt = request.form.get('initial_prompt')
 
         cursor = mysql.connection.cursor()
-        cursor.execute(''' INSERT INTO projects (title, description, author_role, author_tone, username, initial_prompt) VALUES (%s, %s, %s, %s, %s, %s) ''', (title, description, author_role, author_tone, username, initial_prompt))
+        cursor.execute(''' INSERT INTO projects (Title, Description, AuthorRole, AuthorTone, Username, InitialPrompt) VALUES (%s, %s, %s, %s, %s, %s) ''', (title, description, author_role, author_tone, username, initial_prompt))
         mysql.connection.commit()
         cursor.close()
 
