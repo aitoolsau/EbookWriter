@@ -87,6 +87,12 @@ def add_project():
 def projects():
     if 'username' not in session:
         return redirect(url_for('login'))
-    return render_template('projects.html')
+
+    cursor = mysql.connection.cursor()
+    cursor.execute(''' SELECT * FROM projects WHERE Username = %s ''', (session['username'],))
+    projects = cursor.fetchall()
+    cursor.close()
+
+    return render_template('projects.html', projects=projects)
 if __name__ == '__main__':
     app.run(debug=True)

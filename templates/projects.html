@@ -7,7 +7,24 @@
     {% include 'header.html' %}
     <h1>Projects Page</h1>
     <button onclick="location.href='add_project'">Add Project</button>
-    <!-- Add your projects related content here -->
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Author Role</th>
+            <th>Author Tone</th>
+            <th>Initial Prompt</th>
+        </tr>
+        {% for project in projects %}
+        <tr>
+            <td>{{ project.Title }}</td>
+            <td>{{ project.Description }}</td>
+            <td>{{ project.AuthorRole }}</td>
+            <td>{{ project.AuthorTone }}</td>
+            <td>{{ project.InitialPrompt }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
 </html>
