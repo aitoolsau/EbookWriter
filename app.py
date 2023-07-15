@@ -64,12 +64,15 @@ def projects():
 @app.route('/add_project', methods=['GET', 'POST'])
 def add_project():
     if request.method == 'POST':
-        project_name = request.form.get('project_name')
+        title = request.form.get('title')
         description = request.form.get('description')
-        status = request.form.get('status')
+        author_role = request.form.get('author_role')
+        author_tone = request.form.get('author_tone')
+        username = session['username']  # Assuming you have a session variable for the logged in user
+        initial_prompt = request.form.get('initial_prompt')
 
         cursor = mysql.connection.cursor()
-        cursor.execute(''' INSERT INTO projects (project_name, description, status) VALUES (%s, %s, %s) ''', (project_name, description, status))
+        cursor.execute(''' INSERT INTO projects (title, description, author_role, author_tone, username, initial_prompt) VALUES (%s, %s, %s, %s, %s, %s) ''', (title, description, author_role, author_tone, username, initial_prompt))
         mysql.connection.commit()
         cursor.close()
 

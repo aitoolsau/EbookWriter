@@ -7,12 +7,16 @@
     {% include 'header.html' %}
     <h1>Add Project</h1>
     <form action="/add_project" method="post">
-        <label for="project_name">Project Name:</label><br>
-        <input type="text" id="project_name" name="project_name"><br>
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br>
         <label for="description">Description:</label><br>
-        <input type="text" id="description" name="description"><br>
-        <label for="status">Status:</label><br>
-        <input type="text" id="status" name="status"><br>
+        <textarea id="description" name="description"></textarea><br>
+        <label for="author_role">Author Role:</label><br>
+        <input type="text" id="author_role" name="author_role"><br>
+        <label for="author_tone">Author Tone:</label><br>
+        <input type="text" id="author_tone" name="author_tone"><br>
+        <label for="initial_prompt">Initial Prompt:</label><br>
+        <textarea id="initial_prompt" name="initial_prompt"></textarea><br>
         <input type="submit" value="Submit">
     </form>
 </body>
