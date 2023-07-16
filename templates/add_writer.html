@@ -7,20 +7,18 @@
     {% include 'header.html' %}
     <h1>Add Writer</h1>
     <form action="/add_writer" method="post">
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username"><br>
     <label for="task">Task:</label><br>
-    <input type="text" id="task" name="task" placeholder="Clearly state what you want to be done. For example, 'Write an article', 'Create a poem', 'Draft an email', etc."><br>
+    <textarea id="task" name="task" placeholder="Clearly state what you want to be done. For example, 'Write an article', 'Create a poem', 'Draft an email', etc."></textarea><br>
     <label for="topic">Topic:</label><br>
-    <input type="text" id="topic" name="topic" placeholder="Specify the subject matter of the writing. For example, 'Climate change', 'Customer service', 'Romantic poetry', etc."><br>
+    <textarea id="topic" name="topic" placeholder="Specify the subject matter of the writing. For example, 'Climate change', 'Customer service', 'Romantic poetry', etc."></textarea><br>
     <label for="style">Style:</label><br>
-    <input type="text" id="style" name="style" placeholder="Indicate the style of writing you prefer. For example, 'Academic', 'Casual', 'Formal', 'Conversational', etc."><br>
+    <textarea id="style" name="style" placeholder="Indicate the style of writing you prefer. For example, 'Academic', 'Casual', 'Formal', 'Conversational', etc."></textarea><br>
     <label for="audience">Audience:</label><br>
-    <input type="text" id="audience" name="audience" placeholder="Describe who will be reading the writing. Knowing the audience can help tailor the language and content appropriately. For example, 'Teenagers', 'Professionals in the tech industry', 'Curious polyamorous partners', etc."><br>
+    <textarea id="audience" name="audience" placeholder="Describe who will be reading the writing. Knowing the audience can help tailor the language and content appropriately. For example, 'Teenagers', 'Professionals in the tech industry', 'Curious polyamorous partners', etc."></textarea><br>
     <label for="length">Length:</label><br>
-    <input type="text" id="length" name="length" placeholder="Specify the desired length of the writing. This could be in terms of word count, number of paragraphs, pages, etc."><br>
+    <textarea id="length" name="length" placeholder="Specify the desired length of the writing. This could be in terms of word count, number of paragraphs, pages, etc."></textarea><br>
     <label for="format">Format:</label><br>
-    <input type="text" id="format" name="format" placeholder="If there's a specific format you want the writing in, mention it. For example, 'Markdown', 'APA citation style', 'Email format', etc."><br>
+    <textarea id="format" name="format" placeholder="If there's a specific format you want the writing in, mention it. For example, 'Markdown', 'APA citation style', 'Email format', etc."></textarea><br>
     <label for="additional_information">Additional Information:</label><br>
     <textarea id="additional_information" name="additional_information" placeholder="Any other specific details that you think would be helpful. This could include things like key points to cover, a preferred structure, specific phrases to include or avoid, etc."></textarea><br>
         <input type="submit" value="Add Writer">
