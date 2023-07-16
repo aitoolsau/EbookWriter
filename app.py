@@ -103,7 +103,8 @@ def edit_project(project_id):
     if 'username' not in session:
         return redirect(url_for('login'))
 
-    cursor = mysql.connection.cursor()
+    from MySQLdb.cursors import DictCursor
+    cursor = mysql.connection.cursor(DictCursor)
     cursor.execute(''' SELECT * FROM projects WHERE ProjectID = %s ''', (project_id,))
     project = cursor.fetchone()
     cursor.close()
