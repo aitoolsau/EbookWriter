@@ -20,3 +20,8 @@ if __name__ == "__main__":
 if __name__ == "__main__":
     prompt = "Translate the following English text to French: '{}'"
     print(generate_text(prompt.format("Hello, how are you?")))
+
+# Test the function
+if __name__ == "__main__":
+    prompt = "Translate the following English text to French: '{}'"
+    print(generate_text(prompt.format("Hello, how are you?")))
