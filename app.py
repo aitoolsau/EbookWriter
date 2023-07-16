@@ -69,8 +69,6 @@ def add_project():
     if request.method == 'POST':
         title = request.form.get('title')
         description = request.form.get('description')
-        author_role = request.form.get('author_role')
-        author_tone = request.form.get('author_tone')
         username = session['username']
         initial_prompt = request.form.get('initial_prompt')
         task = request.form.get('task')
@@ -81,8 +79,7 @@ def add_project():
         format = request.form.get('format')
         additional_information = request.form.get('additional_information')
 
-        cursor = mysql.connection.cursor()
-        cursor.execute(''' INSERT INTO projects (Title, Description, AuthorRole, AuthorTone, Username, InitialPrompt, Task, Topic, Style, Audience, Length, Format, AdditionalInformation) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ''', (title, description, author_role, author_tone, username, initial_prompt, task, topic, style, audience, length, format, additional_information))
+        cursor.execute(''' INSERT INTO projects (Title, Description, Username, InitialPrompt, Task, Topic, Style, Audience, Length, Format, AdditionalInformation) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ''', (title, description, username, initial_prompt, task, topic, style, audience, length, format, additional_information))
         mysql.connection.commit()
         cursor.close()
 
