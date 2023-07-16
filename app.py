@@ -73,6 +73,13 @@ def add_project():
         author_tone = request.form.get('author_tone')
         username = session['username']
         initial_prompt = request.form.get('initial_prompt')
+        task = request.form.get('task')
+        topic = request.form.get('topic')
+        style = request.form.get('style')
+        audience = request.form.get('audience')
+        length = request.form.get('length')
+        format = request.form.get('format')
+        additional_information = request.form.get('additional_information')
 
         cursor = mysql.connection.cursor()
         cursor.execute(''' INSERT INTO projects (Title, Description, AuthorRole, AuthorTone, Username, InitialPrompt, Task, Topic, Style, Audience, Length, Format, AdditionalInformation) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ''', (title, description, author_role, author_tone, username, initial_prompt, task, topic, style, audience, length, format, additional_information))
