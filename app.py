@@ -206,14 +206,13 @@ def add_writer():
 
         cursor = mysql.connection.cursor()
         writerName = request.form.get('writerName')
-        cursor.execute(''' INSERT INTO writers (UserID, Task, Topic, Style, Audience, Length, Format, AdditionalInformation, writerName) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) ''', (userID, task, topic, style, audience, length, format, additional_information, writerName))
+        cursor.execute(''' INSERT INTO writers (UserID, Task, Topic, Style, Tone, Audience, Length, Format, AdditionalInformation, writerName) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ''', (userID, task, topic, style, tone, audience, length, format, additional_information, writerName))
         mysql.connection.commit()
-        cursor.close()
-        cursor.close()
         cursor.close()
 
         return redirect(url_for('writers'))
     else:
+        return render_template('add_writer.html')
         return render_template('add_writer.html')
 
 @app.route('/delete_writer/<int:WriterID>', methods=['POST'])
