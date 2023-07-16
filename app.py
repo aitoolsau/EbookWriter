@@ -103,6 +103,11 @@ def edit_project(project_id):
     if 'username' not in session:
         return redirect(url_for('login'))
 
+    cursor = mysql.connection.cursor()
+    cursor.execute(''' SELECT * FROM projects WHERE ProjectID = %s ''', (project_id,))
+    project = cursor.fetchone()
+    cursor.close()
+
     if request.method == 'POST':
         # Add your code here to handle the POST request
         pass
@@ -110,7 +115,7 @@ def edit_project(project_id):
         # Add your code here to handle the GET request
         pass
 
-    return render_template('edit_project.html')
+    return render_template('edit_project.html', project=project)
 
 if __name__ == '__main__':
     app.run(debug=True)
