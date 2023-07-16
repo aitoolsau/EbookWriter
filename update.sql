@@ -6,3 +6,11 @@ ADD COLUMN Audience VARCHAR(255),
 ADD COLUMN Length VARCHAR(255),
 ADD COLUMN Format VARCHAR(255),
 ADD COLUMN AdditionalInformation TEXT;
+ALTER TABLE projects
+DROP COLUMN Task,
+DROP COLUMN Topic,
+DROP COLUMN Style,
+DROP COLUMN Audience,
+DROP COLUMN Length,
+DROP COLUMN Format,
+DROP COLUMN AdditionalInformation;
