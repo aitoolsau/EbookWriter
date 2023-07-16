@@ -166,5 +166,16 @@ def writers():
 
     return render_template('writers.html', writers=writers)
 
+@app.route('/add_writer', methods=['GET', 'POST'])
+def add_writer():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        # Add logic to insert the new writer into the database
+        return redirect(url_for('writers'))
+    else:
+        return render_template('add_writer.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
