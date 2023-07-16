@@ -196,7 +196,7 @@ def edit_writer(WriterID):
     if 'userID' not in session:
         return redirect(url_for('login'))
 
-    cursor = mysql.connection.cursor()
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute(''' SELECT * FROM writers WHERE WriterID = %s ''', [WriterID])
     writer = cursor.fetchone()
     print("Writer fetched from database: ", writer)  # Debug print statement
