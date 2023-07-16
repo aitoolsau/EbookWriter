@@ -191,13 +191,13 @@ def add_writer():
     else:
         return render_template('add_writer.html')
 
-@app.route('/edit_writer/<int:id>', methods=['GET', 'POST'])
-def edit_writer(id):
+@app.route('/edit_writer/<int:WriterID>', methods=['GET', 'POST'])
+def edit_writer(WriterID):
     if 'userID' not in session:
         return redirect(url_for('login'))
 
     cursor = mysql.connection.cursor()
-    cursor.execute(''' SELECT * FROM writers WHERE id = %s ''', (id,))
+    cursor.execute(''' SELECT * FROM writers WHERE WriterID = %s ''', (WriterID,))
     writer = cursor.fetchone()
 
     if request.method == 'POST':

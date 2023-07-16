@@ -6,7 +6,7 @@
 <body>
     {% include 'header.html' %}
     <h1>Edit Writer</h1>
-    <form action="/edit_writer/{{ writer.id }}" method="post">
+    <form action="/edit_writer/{{ writer.WriterID }}" method="post">
         <label for="task">Task:</label><br>
         <input type="text" id="task" name="task" value="{{ writer.Task }}"><br>
         <label for="topic">Topic:</label><br>
