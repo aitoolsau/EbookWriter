@@ -156,5 +156,18 @@ def delete_project(project_id):
 
     return redirect(url_for('projects'))
 
+@app.route('/writers')
+def writers():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    from MySQLdb.cursors import DictCursor
+    cursor = mysql.connection.cursor(DictCursor)
+    cursor.execute(''' SELECT * FROM writers WHERE Username = %s ''', (session['username'],))
+    writers = cursor.fetchall()
+    cursor.close()
+
+    return render_template('writers.html', writers=writers)
+
 if __name__ == '__main__':
     app.run(debug=True)

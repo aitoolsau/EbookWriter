@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Writers</title>
+</head>
+<body>
+    {% include 'header.html' %}
+    <h1>Writers Page</h1>
+    <table style="width:100%; border: 1px solid #ddd; margin-top: 20px; border-collapse: collapse;">
+        <tr style="background-color: #008000;">
+            <th style="padding: 15px; text-align: left;">Username</th>
+            <th style="padding: 15px; text-align: left;">Task</th>
+            <th style="padding: 15px; text-align: left;">Topic</th>
+            <th style="padding: 15px; text-align: left;">Style</th>
+            <th style="padding: 15px; text-align: left;">Audience</th>
+            <th style="padding: 15px; text-align: left;">Length</th>
+            <th style="padding: 15px; text-align: left;">Format</th>
+            <th style="padding: 15px; text-align: left;">Additional Information</th>
+        </tr>
+        {% for writer in writers %}
+        <tr>
+            <td style="padding: 15px; text-align: left;">{{ writer.Username }}</td>
+            <td style="padding: 15px; text-align: left;">{{ writer.Task }}</td>
+            <td style="padding: 15px; text-align: left;">{{ writer.Topic }}</td>
+            <td style="padding: 15px; text-align: left;">{{ writer.Style }}</td>
+            <td style="padding: 15px; text-align: left;">{{ writer.Audience }}</td>
+            <td style="padding: 15px; text-align: left;">{{ writer.Length }}</td>
+            <td style="padding: 15px; text-align: left;">{{ writer.Format }}</td>
+            <td style="padding: 15px; text-align: left;">{{ writer.AdditionalInformation }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
