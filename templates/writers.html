@@ -9,7 +9,6 @@
     <button onclick="location.href='add_writer'">Add Writer</button>
     <table style="width:100%; border: 1px solid #ddd; margin-top: 20px; border-collapse: collapse;">
         <tr style="background-color: #008000;">
-            <th style="padding: 15px; text-align: left;">Username</th>
             <th style="padding: 15px; text-align: left;">Task</th>
             <th style="padding: 15px; text-align: left;">Topic</th>
             <th style="padding: 15px; text-align: left;">Style</th>
@@ -17,10 +16,10 @@
             <th style="padding: 15px; text-align: left;">Length</th>
             <th style="padding: 15px; text-align: left;">Format</th>
             <th style="padding: 15px; text-align: left;">Additional Information</th>
+            <th style="padding: 15px; text-align: left;">Actions</th>
         </tr>
         {% for writer in writers %}
         <tr>
-            <td style="padding: 15px; text-align: left;">{{ writer.Username }}</td>
             <td style="padding: 15px; text-align: left;">{{ writer.Task }}</td>
             <td style="padding: 15px; text-align: left;">{{ writer.Topic }}</td>
             <td style="padding: 15px; text-align: left;">{{ writer.Style }}</td>
@@ -28,6 +27,7 @@
             <td style="padding: 15px; text-align: left;">{{ writer.Length }}</td>
             <td style="padding: 15px; text-align: left;">{{ writer.Format }}</td>
             <td style="padding: 15px; text-align: left;">{{ writer.AdditionalInformation }}</td>
+            <td style="padding: 15px; text-align: left;"><a href="/edit_writer/{{ writer.id }}">Edit</a></td>
         </tr>
         {% endfor %}
     </table>
