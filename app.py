@@ -205,12 +205,14 @@ def delete_writer(WriterID):
     mysql.connection.commit()
     cursor.close()
 
-    return redirect(url_for('writers'))
+@app.route('/edit_writer/<int:WriterID>', methods=['GET', 'POST'])
+def edit_writer(WriterID):
+    if 'userID' not in session:
+        return redirect(url_for('login'))
 
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute(''' SELECT * FROM writers WHERE WriterID = %s ''', [WriterID])
     writer = cursor.fetchone()
-    print("Writer fetched from database: ", writer)  # Debug print statement
 
     if request.method == 'POST':
         task = request.form.get('task')
@@ -220,17 +222,14 @@ def delete_writer(WriterID):
         length = request.form.get('length')
         format = request.form.get('format')
         additional_information = request.form.get('additional_information')
-
         writerName = request.form.get('writerName')
+
         cursor.execute(''' UPDATE writers SET Task = %s, Topic = %s, Style = %s, Audience = %s, Length = %s, Format = %s, AdditionalInformation = %s, writerName = %s WHERE WriterID = %s ''', (task, topic, style, audience, length, format, additional_information, writerName, WriterID))
         mysql.connection.commit()
-        cursor.close()
-        cursor.close()
         cursor.close()
 
         return redirect(url_for('writers'))
     else:
-        print("Data passed to template: ", writer)  # Debug print statement
         return render_template('edit_writer.html', writer=writer)
 if __name__ == '__main__':
     app.run(debug=True)
