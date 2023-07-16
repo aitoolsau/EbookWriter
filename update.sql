@@ -14,3 +14,15 @@ DROP COLUMN Audience,
 DROP COLUMN Length,
 DROP COLUMN Format,
 DROP COLUMN AdditionalInformation;
+CREATE TABLE writers (
+    Username VARCHAR(255) NOT NULL,
+    Task VARCHAR(255),
+    Topic VARCHAR(255),
+    Style VARCHAR(255),
+    Audience VARCHAR(255),
+    Length VARCHAR(255),
+    Format VARCHAR(255),
+    AdditionalInformation TEXT,
+    PRIMARY KEY (Username),
+    FOREIGN KEY (Username) REFERENCES users(Username)
+);
