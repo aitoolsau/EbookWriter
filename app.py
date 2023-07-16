@@ -199,6 +199,7 @@ def edit_writer(WriterID):
     cursor = mysql.connection.cursor()
     cursor.execute(''' SELECT * FROM writers WHERE WriterID = %s ''', [WriterID])
     writer = cursor.fetchone()
+    print("Writer fetched from database: ", writer)  # Debug print statement
 
     if request.method == 'POST':
         # Add your update logic here
