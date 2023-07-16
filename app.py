@@ -25,6 +25,7 @@ def login():
 
         if user:
             session['username'] = username  # Store the username in the session
+            session['userID'] = user['id']  # Store the userID in the session
             return redirect(url_for('home'))
         else:
             return 'Invalid username or password'
@@ -168,11 +169,11 @@ def writers():
 
 @app.route('/add_writer', methods=['GET', 'POST'])
 def add_writer():
-    if 'username' not in session:
+    if 'userID' not in session:
         return redirect(url_for('login'))
 
     if request.method == 'POST':
-        username = request.form.get('username')
+        userID = session['userID']
         task = request.form.get('task')
         topic = request.form.get('topic')
         style = request.form.get('style')
@@ -182,7 +183,7 @@ def add_writer():
         additional_information = request.form.get('additional_information')
 
         cursor = mysql.connection.cursor()
-        cursor.execute(''' INSERT INTO writers (Username, Task, Topic, Style, Audience, Length, Format, AdditionalInformation) VALUES (%s, %s, %s, %s, %s, %s, %s, %s) ''', (username, task, topic, style, audience, length, format, additional_information))
+        cursor.execute(''' INSERT INTO writers (UserID, Task, Topic, Style, Audience, Length, Format, AdditionalInformation) VALUES (%s, %s, %s, %s, %s, %s, %s, %s) ''', (userID, task, topic, style, audience, length, format, additional_information))
         mysql.connection.commit()
         cursor.close()
 
