@@ -195,10 +195,17 @@ def add_writer():
     else:
         return render_template('add_writer.html')
 
-@app.route('/edit_writer/<int:WriterID>', methods=['GET', 'POST'])
-def edit_writer(WriterID):
+@app.route('/delete_writer/<int:WriterID>', methods=['POST'])
+def delete_writer(WriterID):
     if 'userID' not in session:
         return redirect(url_for('login'))
+
+    cursor = mysql.connection.cursor()
+    cursor.execute(''' DELETE FROM writers WHERE WriterID = %s ''', (WriterID,))
+    mysql.connection.commit()
+    cursor.close()
+
+    return redirect(url_for('writers'))
 
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute(''' SELECT * FROM writers WHERE WriterID = %s ''', [WriterID])
