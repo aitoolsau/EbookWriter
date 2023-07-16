@@ -56,3 +56,6 @@ CREATE TABLE writers (
 ALTER TABLE writers
 ADD CONSTRAINT fk_userid
 FOREIGN KEY (UserID) REFERENCES users(UserID);
+ALTER TABLE projects
+DROP COLUMN author_tone,
+DROP COLUMN author_role;
