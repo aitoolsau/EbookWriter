@@ -33,8 +33,7 @@
             <td style="padding: 15px; text-align: left;">{{ writer.AdditionalInformation }}</td>
             <td style="padding: 15px; text-align: left;">
         
-        <form action="{{ url_for('edit_writer', WriterID=writer.WriterID) }}" method="post" style="display: inline;">
-            <input type="hidden" name="_method" value="EDIT">
+        <form action="{{ url_for('edit_writer', WriterID=writer.WriterID) }}" method="get" style="display: inline;">
             <button type="submit" class="edit-button">Edit</button>
         </form>
         <form action="/delete_writer/{{ writer.WriterID }}" method="post" style="display: inline;">
