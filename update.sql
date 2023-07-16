@@ -38,3 +38,15 @@ CREATE TABLE writers (
     PRIMARY KEY (UserID),
     FOREIGN KEY (UserID) REFERENCES users(UserID)
 );
+CREATE TABLE writers (
+    UserID INT NOT NULL,
+    Task VARCHAR(255),
+    Topic VARCHAR(255),
+    Style VARCHAR(255),
+    Audience VARCHAR(255),
+    Length VARCHAR(255),
+    Format VARCHAR(255),
+    AdditionalInformation TEXT,
+    PRIMARY KEY (UserID),
+    FOREIGN KEY (UserID) REFERENCES users(UserID)
+);
