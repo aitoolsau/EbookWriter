@@ -97,5 +97,20 @@ def projects():
     print("Projects fetched from database: ", projects)  # Debug print statement
 
     return render_template('projects.html', projects=projects)
+
+@app.route('/edit_project/<int:project_id>', methods=['GET', 'POST'])
+def edit_project(project_id):
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        # Add your code here to handle the POST request
+        pass
+    else:
+        # Add your code here to handle the GET request
+        pass
+
+    return render_template('edit_project.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
