@@ -21,14 +21,16 @@
         </tr>
         {% for writer in writers %}
         <tr>
+            <td style="padding: 15px; text-align: left;">{{ writer.WriterID }}</td>
+            <td style="padding: 15px; text-align: left;">{{ writer.UserID }}</td>
             <td style="padding: 15px; text-align: left;">{{ writer.writerName }}</td>
-            <td style="padding: 15px; text-align: left;">{{ writer.task }}</td>
-            <td style="padding: 15px; text-align: left;">{{ writer.topic }}</td>
-            <td style="padding: 15px; text-align: left;">{{ writer.style }}</td>
-            <td style="padding: 15px; text-align: left;">{{ writer.audience }}</td>
-            <td style="padding: 15px; text-align: left;">{{ writer.length }}</td>
-            <td style="padding: 15px; text-align: left;">{{ writer.format }}</td>
-            <td style="padding: 15px; text-align: left;">{{ writer.additional_information }}</td>
+            <td style="padding: 15px; text-align: left;">{{ writer.Task }}</td>
+            <td style="padding: 15px; text-align: left;">{{ writer.Topic }}</td>
+            <td style="padding: 15px; text-align: left;">{{ writer.Style }}</td>
+            <td style="padding: 15px; text-align: left;">{{ writer.Audience }}</td>
+            <td style="padding: 15px; text-align: left;">{{ writer.Length }}</td>
+            <td style="padding: 15px; text-align: left;">{{ writer.Format }}</td>
+            <td style="padding: 15px; text-align: left;">{{ writer.AdditionalInformation }}</td>
             <td style="padding: 15px; text-align: left;">
         
         <form action="/edit_writer/{{ writer.WriterID }}" method="post" style="display: inline;">
