@@ -12,21 +12,24 @@
         <label for="writer">Choose Writer:</label>
         <select name="writer" id="writer">
             {% for writer in writers %}
-            <option value="{{ writer.WriterID }}">{{ writer.writerName }}</option>
+            <option value="{{ writer.WriterID }}" data-task="{{ writer.Task }}" data-topic="{{ writer.Topic }}" data-style="{{ writer.Style }}"
+        data-tone="{{ writer.Tone }}" data-audience="{{ writer.Audience }}" data-length="{{ writer.Length }}" data-format="{{ writer.Format }}"
+        data-additional-information="{{ writer.AdditionalInformation }}">{{ writer.writerName }}</option>
             {% endfor %}
         </select>
-        <input type="submit" value="Generate Prompt">
-    </form>
-    <p>Complete Prompt:</p>
-    <textarea readonly id="prompt">
-        {{ prompt }}
-    </textarea>
-    <script>
-        document.getElementById('writer').addEventListener('change', function() {
-            var selectedWriter = this.options[this.selectedIndex].text;
-            var prompt = document.getElementById('prompt');
-            prompt.value = selectedWriter;
-        });
-    </script>
+        <script>
+            document.getElementById('writer').addEventListener('change', function() {
+                var selectedOption = this.options[this.selectedIndex];
+                var prompt = document.getElementById('prompt');
+                prompt.value = "Task: " + selectedOption.getAttribute('data-task') +
+                               "\nTopic: " + selectedOption.getAttribute('data-topic') +
+                               "\nStyle: " + selectedOption.getAttribute('data-style') +
+                               "\nTone: " + selectedOption.getAttribute('data-tone') +
+                               "\nAudience: " + selectedOption.getAttribute('data-audience') +
+                               "\nLength: " + selectedOption.getAttribute('data-length') +
+                               "\nFormat: " + selectedOption.getAttribute('data-format') +
+                               "\nAdditional Information: " + selectedOption.getAttribute('data-additional-information');
+            });
+        </script>
 </body>
 </html>
