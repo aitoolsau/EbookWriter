@@ -15,7 +15,7 @@ DROP COLUMN Length,
 DROP COLUMN Format,
 DROP COLUMN AdditionalInformation;
 CREATE TABLE writers (
-    Username VARCHAR(255) NOT NULL,
+    UserID INT NOT NULL,
     Task VARCHAR(255),
     Topic VARCHAR(255),
     Style VARCHAR(255),
@@ -23,11 +23,11 @@ CREATE TABLE writers (
     Length VARCHAR(255),
     Format VARCHAR(255),
     AdditionalInformation TEXT,
-    PRIMARY KEY (Username),
-    FOREIGN KEY (Username) REFERENCES users(Username)
+    PRIMARY KEY (UserID),
+    FOREIGN KEY (UserID) REFERENCES users(UserID)
 );
 CREATE TABLE writers (
-    Username VARCHAR(255) NOT NULL,
+    UserID INT NOT NULL,
     Task VARCHAR(255),
     Topic VARCHAR(255),
     Style VARCHAR(255),
@@ -35,6 +35,6 @@ CREATE TABLE writers (
     Length VARCHAR(255),
     Format VARCHAR(255),
     AdditionalInformation TEXT,
-    PRIMARY KEY (Username),
-    FOREIGN KEY (Username) REFERENCES users(Username)
+    PRIMARY KEY (UserID),
+    FOREIGN KEY (UserID) REFERENCES users(UserID)
 );
