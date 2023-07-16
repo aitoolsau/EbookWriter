@@ -10,6 +10,16 @@
     <p>Description: {{ project.Description }}</p>
     <p>Author Role: {{ project.AuthorRole }}</p>
     <p>Author Tone: {{ project.AuthorTone }}</p>
-    <p>Initial Prompt: {{ project.InitialPrompt }}</p>
+    <p>Complete Prompt:</p>
+    <textarea readonly>
+        Task: {{ project.Task }}
+        Topic: {{ project.Topic }}
+        Style: {{ project.Style }}
+        Tone: {{ project.Tone }}
+        Audience: {{ project.Audience }}
+        Length: {{ project.Length }}
+        Format: {{ project.Format }}
+        Additional Information: {{ project.AdditionalInformation }}
+    </textarea>
 </body>
 </html>
