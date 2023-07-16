@@ -190,5 +190,20 @@ def add_writer():
         return redirect(url_for('writers'))
     else:
         return render_template('add_writer.html')
+
+@app.route('/edit_writer/<int:id>', methods=['GET', 'POST'])
+def edit_writer(id):
+    if 'userID' not in session:
+        return redirect(url_for('login'))
+
+    cursor = mysql.connection.cursor()
+    cursor.execute(''' SELECT * FROM writers WHERE id = %s ''', (id,))
+    writer = cursor.fetchone()
+
+    if request.method == 'POST':
+        # Add your update logic here
+        return redirect(url_for('writers'))
+    else:
+        return render_template('edit_writer.html', writer=writer)
 if __name__ == '__main__':
     app.run(debug=True)
