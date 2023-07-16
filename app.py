@@ -25,7 +25,7 @@ def login():
 
         if user:
             session['username'] = username  # Store the username in the session
-            session['userID'] = user['id']  # Store the userID in the session
+            session['userID'] = user[0]  # Store the userID in the session
             return redirect(url_for('home'))
         else:
             return 'Invalid username or password'
