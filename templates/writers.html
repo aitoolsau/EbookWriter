@@ -15,8 +15,9 @@
             <th style="padding: 15px; text-align: left;">Audience</th>
             <th style="padding: 15px; text-align: left;">Length</th>
             <th style="padding: 15px; text-align: left;">Format</th>
-            <th style="padding: 15px; text-align: left;">Additional Information</th>
-            <th style="padding: 15px; text-align: left;">Actions</th>
+    <th style="padding: 15px; text-align: left;">Writer Name</th>
+    <th style="padding: 15px; text-align: left;">Additional Information</th>
+    <th style="padding: 15px; text-align: left;">Actions</th>
         </tr>
         {% for writer in writers %}
         <tr>
@@ -26,8 +27,9 @@
             <td style="padding: 15px; text-align: left;">{{ writer.Audience }}</td>
             <td style="padding: 15px; text-align: left;">{{ writer.Length }}</td>
             <td style="padding: 15px; text-align: left;">{{ writer.Format }}</td>
-            <td style="padding: 15px; text-align: left;">{{ writer.AdditionalInformation }}</td>
-            <td style="padding: 15px; text-align: left;"><a href="/edit_writer/{{ writer.WriterID }}">Edit</a></td>
+    <td style="padding: 15px; text-align: left;">{{ writer.writerName }}</td>
+    <td style="padding: 15px; text-align: left;">{{ writer.AdditionalInformation }}</td>
+    <td style="padding: 15px; text-align: left;"><a href="/edit_writer/{{ writer.WriterID }}">Edit</a></td>
         </tr>
         {% endfor %}
     </table>
