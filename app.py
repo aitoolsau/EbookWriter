@@ -197,7 +197,7 @@ def edit_writer(WriterID):
         return redirect(url_for('login'))
 
     cursor = mysql.connection.cursor()
-    cursor.execute(''' SELECT * FROM writers WHERE WriterID = %s ''', (WriterID,))
+    cursor.execute(''' SELECT * FROM writers WHERE WriterID = %s ''', [WriterID])
     writer = cursor.fetchone()
 
     if request.method == 'POST':
