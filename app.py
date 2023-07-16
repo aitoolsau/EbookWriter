@@ -183,10 +183,11 @@ def add_writer():
         format = request.form.get('format')
         additional_information = request.form.get('additional_information')
 
-        cursor = mysql.connection.cursor()
-        writerName = request.form.get('writerName')
+    cursor = mysql.connection.cursor()
+    writerName = request.form.get('writerName')
     cursor.execute(''' INSERT INTO writers (UserID, Task, Topic, Style, Audience, Length, Format, AdditionalInformation, writerName) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) ''', (userID, task, topic, style, audience, length, format, additional_information, writerName))
-        mysql.connection.commit()
+    mysql.connection.commit()
+    cursor.close()
         cursor.close()
 
         return redirect(url_for('writers'))
@@ -212,9 +213,10 @@ def edit_writer(WriterID):
         format = request.form.get('format')
         additional_information = request.form.get('additional_information')
 
-        writerName = request.form.get('writerName')
+    writerName = request.form.get('writerName')
     cursor.execute(''' UPDATE writers SET Task = %s, Topic = %s, Style = %s, Audience = %s, Length = %s, Format = %s, AdditionalInformation = %s, writerName = %s WHERE WriterID = %s ''', (task, topic, style, audience, length, format, additional_information, writerName, WriterID))
-        mysql.connection.commit()
+    mysql.connection.commit()
+    cursor.close()
         cursor.close()
 
         return redirect(url_for('writers'))
