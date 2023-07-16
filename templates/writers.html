@@ -31,7 +31,9 @@
             <td style="padding: 15px; text-align: left;">{{ writer.AdditionalInformation }}</td>
             <td style="padding: 15px; text-align: left;">
         <a href="/edit_writer/{{ writer.WriterID }}">Edit</a> |
-        <a href="/delete_writer/{{ writer.WriterID }}" class="delete-button">Delete</a>
+        <form action="/delete_writer/{{ writer.WriterID }}" method="post" style="display: inline;">
+            <button type="submit" class="delete-button">Delete</button>
+        </form>
     </td>
         </tr>
         {% endfor %}
