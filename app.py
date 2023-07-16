@@ -118,11 +118,9 @@ def edit_project(project_id):
     if request.method == 'POST':
         title = request.form.get('title')
         description = request.form.get('description')
-        author_role = request.form.get('author_role')
-        author_tone = request.form.get('author_tone')
         initial_prompt = request.form.get('initial_prompt')
 
-        cursor.execute(''' UPDATE projects SET Title = %s, Description = %s, AuthorRole = %s, AuthorTone = %s, InitialPrompt = %s WHERE ProjectID = %s ''', (title, description, author_role, author_tone, initial_prompt, project_id))
+        cursor.execute(''' UPDATE projects SET Title = %s, Description = %s, InitialPrompt = %s WHERE ProjectID = %s ''', (title, description, initial_prompt, project_id))
         mysql.connection.commit()
 
         cursor.close()
