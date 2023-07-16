@@ -154,7 +154,7 @@ def generator(project_id):
         print(f"Project: {project}")
         print(f"Selected Writer: {selected_writer}")
 
-        if 'Task' in project and 'Style' in selected_writer:
+        if all(key in project for key in ['Task', 'Topic']) and all(key in selected_writer for key in ['Style', 'Tone', 'Audience', 'Length', 'Format', 'AdditionalInformation']):
             prompt = f"Task: {project['Task']}\nTopic: {project['Topic']}\nStyle: {selected_writer['Style']}\nTone: {selected_writer['Tone']}\nAudience: {selected_writer['Audience']}\nLength: {selected_writer['Length']}\nFormat: {selected_writer['Format']}\nAdditional Information: {selected_writer['AdditionalInformation']}"
         else:
             prompt = "Incomplete data. Please ensure all fields are filled."
