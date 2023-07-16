@@ -7,7 +7,20 @@
     {% include 'header.html' %}
     <h1>Edit Writer</h1>
     <form action="/edit_writer/{{ writer.id }}" method="post">
-        <!-- Add your form fields here -->
+        <label for="task">Task:</label><br>
+        <input type="text" id="task" name="task" value="{{ writer.Task }}"><br>
+        <label for="topic">Topic:</label><br>
+        <input type="text" id="topic" name="topic" value="{{ writer.Topic }}"><br>
+        <label for="style">Style:</label><br>
+        <input type="text" id="style" name="style" value="{{ writer.Style }}"><br>
+        <label for="audience">Audience:</label><br>
+        <input type="text" id="audience" name="audience" value="{{ writer.Audience }}"><br>
+        <label for="length">Length:</label><br>
+        <input type="text" id="length" name="length" value="{{ writer.Length }}"><br>
+        <label for="format">Format:</label><br>
+        <input type="text" id="format" name="format" value="{{ writer.Format }}"><br>
+        <label for="additional_information">Additional Information:</label><br>
+        <input type="text" id="additional_information" name="additional_information" value="{{ writer.AdditionalInformation }}"><br>
         <input type="submit" value="Update Writer">
     </form>
 </body>
