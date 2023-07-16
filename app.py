@@ -203,7 +203,18 @@ def edit_writer(WriterID):
     print("Writer fetched from database: ", writer)  # Debug print statement
 
     if request.method == 'POST':
-        # Add your update logic here
+        task = request.form.get('task')
+        topic = request.form.get('topic')
+        style = request.form.get('style')
+        audience = request.form.get('audience')
+        length = request.form.get('length')
+        format = request.form.get('format')
+        additional_information = request.form.get('additional_information')
+
+        cursor.execute(''' UPDATE writers SET Task = %s, Topic = %s, Style = %s, Audience = %s, Length = %s, Format = %s, AdditionalInformation = %s WHERE WriterID = %s ''', (task, topic, style, audience, length, format, additional_information, WriterID))
+        mysql.connection.commit()
+        cursor.close()
+
         return redirect(url_for('writers'))
     else:
         print("Data passed to template: ", writer)  # Debug print statement
