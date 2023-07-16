@@ -190,6 +190,5 @@ def add_writer():
         return redirect(url_for('writers'))
     else:
         return render_template('add_writer.html')
-
 if __name__ == '__main__':
     app.run(debug=True)
