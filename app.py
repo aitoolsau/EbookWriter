@@ -124,5 +124,17 @@ def edit_project(project_id):
         cursor.close()
         return render_template('edit_project.html', project=project)
 
+@app.route('/delete_project/<int:project_id>', methods=['POST'])
+def delete_project(project_id):
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    cursor = mysql.connection.cursor()
+    cursor.execute(''' DELETE FROM projects WHERE ProjectID = %s ''', (project_id,))
+    mysql.connection.commit()
+    cursor.close()
+
+    return redirect(url_for('projects'))
+
 if __name__ == '__main__':
     app.run(debug=True)
