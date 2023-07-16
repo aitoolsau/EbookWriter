@@ -107,16 +107,22 @@ def edit_project(project_id):
     cursor = mysql.connection.cursor(DictCursor)
     cursor.execute(''' SELECT * FROM projects WHERE ProjectID = %s ''', (project_id,))
     project = cursor.fetchone()
-    cursor.close()
 
     if request.method == 'POST':
-        # Add your code here to handle the POST request
-        pass
-    else:
-        # Add your code here to handle the GET request
-        pass
+        title = request.form.get('title')
+        description = request.form.get('description')
+        author_role = request.form.get('author_role')
+        author_tone = request.form.get('author_tone')
+        initial_prompt = request.form.get('initial_prompt')
 
-    return render_template('edit_project.html', project=project)
+        cursor.execute(''' UPDATE projects SET Title = %s, Description = %s, AuthorRole = %s, AuthorTone = %s, InitialPrompt = %s WHERE ProjectID = %s ''', (title, description, author_role, author_tone, initial_prompt, project_id))
+        mysql.connection.commit()
+
+        cursor.close()
+        return redirect(url_for('projects'))
+    else:
+        cursor.close()
+        return render_template('edit_project.html', project=project)
 
 if __name__ == '__main__':
     app.run(debug=True)
