@@ -1,2 +1,2 @@
 # Configuration file to store sensitive information securely
-api_key = 'your-api-key'
+openai_api_key = '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'
