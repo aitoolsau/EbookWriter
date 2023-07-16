@@ -32,6 +32,7 @@
             <td style="padding: 15px; text-align: left;">
         <a href="/edit_writer/{{ writer.WriterID }}">Edit</a> |
         <form action="/delete_writer/{{ writer.WriterID }}" method="post" style="display: inline;">
+            <input type="hidden" name="_method" value="DELETE">
             <button type="submit" class="delete-button">Delete</button>
         </form>
     </td>
