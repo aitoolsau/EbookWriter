@@ -150,6 +150,9 @@ def generator(project_id):
                 selected_writer = writer
                 break
 
+        print(f"Project: {project}")
+        print(f"Selected Writer: {selected_writer}")
+
         if 'Task' in project and 'Style' in selected_writer:
             prompt = f"Task: {project['Task']}\nTopic: {project['Topic']}\nStyle: {selected_writer['Style']}\nTone: {selected_writer['Tone']}\nAudience: {selected_writer['Audience']}\nLength: {selected_writer['Length']}\nFormat: {selected_writer['Format']}\nAdditional Information: {selected_writer['AdditionalInformation']}"
         else:
