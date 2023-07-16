@@ -53,3 +53,6 @@ CREATE TABLE writers (
     PRIMARY KEY (WriterID),
     FOREIGN KEY (UserID) REFERENCES users(UserID)
 );
+ALTER TABLE writers
+ADD CONSTRAINT fk_userid
+FOREIGN KEY (UserID) REFERENCES users(UserID);
