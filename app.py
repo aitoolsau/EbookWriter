@@ -128,7 +128,7 @@ def edit_project(project_id):
         cursor.close()
         return render_template('edit_project.html', project=project)
 
-@app.route('/generator/<int:project_id>', methods=['GET'])
+@app.route('/generator/<int:project_id>', methods=['GET', 'POST'])
 def generator(project_id):
     if 'username' not in session:
         return redirect(url_for('login'))
@@ -137,9 +137,23 @@ def generator(project_id):
     cursor = mysql.connection.cursor(DictCursor)
     cursor.execute(''' SELECT * FROM projects WHERE ProjectID = %s ''', (project_id,))
     project = cursor.fetchone()
+
+    cursor.execute(''' SELECT * FROM writers WHERE UserID = %s ''', (session['userID'],))
+    writers = cursor.fetchall()
+
     cursor.close()
 
-    return render_template('generator.html', project=project)
+    if request.method == 'POST':
+        writer_id = request.form.get('writer')
+        for writer in writers:
+            if writer['WriterID'] == int(writer_id):
+                selected_writer = writer
+                break
+
+        prompt = f"Task: {project['Task']}\nTopic: {project['Topic']}\nStyle: {selected_writer['Style']}\nTone: {selected_writer['Tone']}\nAudience: {selected_writer['Audience']}\nLength: {selected_writer['Length']}\nFormat: {selected_writer['Format']}\nAdditional Information: {selected_writer['AdditionalInformation']}"
+        return render_template('generator.html', project=project, writers=writers, prompt=prompt)
+
+    return render_template('generator.html', project=project, writers=writers)
 
 @app.route('/delete_project/<int:project_id>', methods=['POST'])
 def delete_project(project_id):

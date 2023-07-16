@@ -8,16 +8,18 @@
     <h1>Generator</h1>
     <p>Title: {{ project.Title }}</p>
     <p>Description: {{ project.Description }}</p>
+    <form method="POST">
+        <label for="writer">Choose Writer:</label>
+        <select name="writer" id="writer">
+            {% for writer in writers %}
+            <option value="{{ writer.WriterID }}">{{ writer.writerName }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Generate Prompt">
+    </form>
     <p>Complete Prompt:</p>
     <textarea readonly>
-        Task: {{ project.Task }}
-        Topic: {{ project.Topic }}
-        Style: {{ project.Style }}
-        Tone: {{ project.Tone }}
-        Audience: {{ project.Audience }}
-        Length: {{ project.Length }}
-        Format: {{ project.Format }}
-        Additional Information: {{ project.AdditionalInformation }}
+        {{ prompt }}
     </textarea>
 </body>
 </html>
