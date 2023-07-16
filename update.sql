@@ -15,6 +15,7 @@ DROP COLUMN Length,
 DROP COLUMN Format,
 DROP COLUMN AdditionalInformation;
 CREATE TABLE writers (
+    WriterID INT AUTO_INCREMENT,
     UserID INT NOT NULL,
     Task VARCHAR(255),
     Topic VARCHAR(255),
@@ -23,10 +24,11 @@ CREATE TABLE writers (
     Length VARCHAR(255),
     Format VARCHAR(255),
     AdditionalInformation TEXT,
-    PRIMARY KEY (UserID),
+    PRIMARY KEY (WriterID),
     FOREIGN KEY (UserID) REFERENCES users(UserID)
 );
 CREATE TABLE writers (
+    WriterID INT AUTO_INCREMENT,
     UserID INT NOT NULL,
     Task VARCHAR(255),
     Topic VARCHAR(255),
@@ -35,10 +37,11 @@ CREATE TABLE writers (
     Length VARCHAR(255),
     Format VARCHAR(255),
     AdditionalInformation TEXT,
-    PRIMARY KEY (UserID),
+    PRIMARY KEY (WriterID),
     FOREIGN KEY (UserID) REFERENCES users(UserID)
 );
 CREATE TABLE writers (
+    WriterID INT AUTO_INCREMENT,
     UserID INT NOT NULL,
     Task VARCHAR(255),
     Topic VARCHAR(255),
@@ -47,6 +50,6 @@ CREATE TABLE writers (
     Length VARCHAR(255),
     Format VARCHAR(255),
     AdditionalInformation TEXT,
-    PRIMARY KEY (UserID),
+    PRIMARY KEY (WriterID),
     FOREIGN KEY (UserID) REFERENCES users(UserID)
 );
