@@ -5,7 +5,7 @@ openai.api_key = api_key
 
 def generate_text(prompt):
     response = openai.Completion.create(
-      engine="text-davinci-002",
+      engine="davinci-codex",
       prompt=prompt,
       max_tokens=100
     )
