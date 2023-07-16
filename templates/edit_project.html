@@ -13,7 +13,7 @@
         <label for="description">Description:</label><br>
         <input type="text" id="description" name="description" value="{{ project.Description }}"><br>
         <label for="initial_prompt">Initial Prompt:</label><br>
-        <input type="text" id="initial_prompt" name="initial_prompt" value="{{ project.InitialPrompt }}"><br>
+        <textarea id="initial_prompt" name="initial_prompt">{{ project.InitialPrompt }}</textarea><br>
         <input type="submit" value="Submit">
     </form>
 </body>
