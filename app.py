@@ -113,6 +113,7 @@ def edit_project(project_id):
     cursor = mysql.connection.cursor(DictCursor)
     cursor.execute(''' SELECT * FROM projects WHERE ProjectID = %s ''', (project_id,))
     project = cursor.fetchone()
+    print(f"Project: {project}")  # Debug print statement
 
     if request.method == 'POST':
         title = request.form.get('title')
