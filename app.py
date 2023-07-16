@@ -124,6 +124,19 @@ def edit_project(project_id):
         cursor.close()
         return render_template('edit_project.html', project=project)
 
+@app.route('/generator/<int:project_id>', methods=['GET'])
+def generator(project_id):
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    from MySQLdb.cursors import DictCursor
+    cursor = mysql.connection.cursor(DictCursor)
+    cursor.execute(''' SELECT * FROM projects WHERE ProjectID = %s ''', (project_id,))
+    project = cursor.fetchone()
+    cursor.close()
+
+    return render_template('generator.html', project=project)
+
 @app.route('/delete_project/<int:project_id>', methods=['POST'])
 def delete_project(project_id):
     if 'username' not in session:
