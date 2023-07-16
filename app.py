@@ -247,7 +247,7 @@ def edit_writer(WriterID):
         additional_information = request.form.get('additional_information')
         writerName = request.form.get('writerName')
 
-        cursor.execute(''' UPDATE writers SET Task = %s, Topic = %s, Style = %s, Audience = %s, Length = %s, Format = %s, AdditionalInformation = %s, writerName = %s WHERE WriterID = %s ''', (task, topic, style, audience, length, format, additional_information, writerName, WriterID))
+        cursor.execute(''' UPDATE writers SET Task = %s, Topic = %s, Style = %s, Tone = %s, Audience = %s, Length = %s, Format = %s, AdditionalInformation = %s, writerName = %s WHERE WriterID = %s ''', (task, topic, style, tone, audience, length, format, additional_information, writerName, WriterID))
         mysql.connection.commit()
         cursor.close()
 
