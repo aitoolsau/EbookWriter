@@ -205,6 +205,7 @@ def edit_writer(WriterID):
         # Add your update logic here
         return redirect(url_for('writers'))
     else:
-        return render_template('edit_writer.html', writer=writer)
+        print("Data passed to template: ", writer)  # Debug print statement
+    return render_template('edit_writer.html', writer=writer)
 if __name__ == '__main__':
     app.run(debug=True)
