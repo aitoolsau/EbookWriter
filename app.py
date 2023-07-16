@@ -155,14 +155,12 @@ def delete_project(project_id):
 
 @app.route('/writers')
 def writers():
-    if 'username' not in session:
+    if 'userID' not in session:
         return redirect(url_for('login'))
 
     from MySQLdb.cursors import DictCursor
     cursor = mysql.connection.cursor(DictCursor)
-    cursor.execute(''' SELECT id FROM users WHERE username = %s ''', (session['username'],))
-    user = cursor.fetchone()
-    cursor.execute(''' SELECT * FROM writers WHERE UserID = %s ''', (user['id'],))
+    cursor.execute(''' SELECT * FROM writers WHERE UserID = %s ''', (session['userID'],))
     writers = cursor.fetchall()
     cursor.close()
 
