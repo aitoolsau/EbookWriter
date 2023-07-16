@@ -205,6 +205,8 @@ def delete_writer(WriterID):
     mysql.connection.commit()
     cursor.close()
 
+    return redirect(url_for('writers'))
+
 @app.route('/edit_writer/<int:WriterID>', methods=['GET', 'POST'])
 def edit_writer(WriterID):
     if 'userID' not in session:
