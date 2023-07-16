@@ -163,7 +163,7 @@ def writers():
 
     from MySQLdb.cursors import DictCursor
     cursor = mysql.connection.cursor(DictCursor)
-    cursor.execute(''' SELECT * FROM users WHERE username = %s ''', (session['username'],))
+    cursor.execute(''' SELECT UserID FROM users WHERE username = %s ''', (session['username'],))
     user = cursor.fetchone()
     cursor.execute(''' SELECT * FROM writers WHERE UserID = %s ''', (user['UserID'],))
     writers = cursor.fetchall()
