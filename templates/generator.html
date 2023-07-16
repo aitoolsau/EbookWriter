@@ -18,8 +18,15 @@
         <input type="submit" value="Generate Prompt">
     </form>
     <p>Complete Prompt:</p>
-    <textarea readonly>
+    <textarea readonly id="prompt">
         {{ prompt }}
     </textarea>
+    <script>
+        document.getElementById('writer').addEventListener('change', function() {
+            var selectedWriter = this.options[this.selectedIndex].text;
+            var prompt = document.getElementById('prompt');
+            prompt.value = selectedWriter;
+        });
+    </script>
 </body>
 </html>
