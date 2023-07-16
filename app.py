@@ -150,7 +150,10 @@ def generator(project_id):
                 selected_writer = writer
                 break
 
-        prompt = f"Task: {project['Task']}\nTopic: {project['Topic']}\nStyle: {selected_writer['Style']}\nTone: {selected_writer['Tone']}\nAudience: {selected_writer['Audience']}\nLength: {selected_writer['Length']}\nFormat: {selected_writer['Format']}\nAdditional Information: {selected_writer['AdditionalInformation']}"
+        if 'Task' in project and 'Style' in selected_writer:
+            prompt = f"Task: {project['Task']}\nTopic: {project['Topic']}\nStyle: {selected_writer['Style']}\nTone: {selected_writer['Tone']}\nAudience: {selected_writer['Audience']}\nLength: {selected_writer['Length']}\nFormat: {selected_writer['Format']}\nAdditional Information: {selected_writer['AdditionalInformation']}"
+        else:
+            prompt = "Incomplete data. Please ensure all fields are filled."
         return render_template('generator.html', project=project, writers=writers, prompt=prompt)
 
     return render_template('generator.html', project=project, writers=writers)
