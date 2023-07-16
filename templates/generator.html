@@ -17,6 +17,7 @@
         data-additional-information="{{ writer.AdditionalInformation }}">{{ writer.writerName }}</option>
             {% endfor %}
         </select>
+        <br />
         <textarea id="prompt" readonly></textarea>
         <script>
             document.getElementById('writer').addEventListener('change', function() {
