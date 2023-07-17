@@ -18,14 +18,11 @@
             {% endfor %}
         </select>
         <br />
-        <textarea id="writerDetails" readonly></textarea>
-        <textarea id="prompt" readonly></textarea>
-        <button id="generate">Generate</button>
         <button id="sendToOpenAI">Send to OpenAI</button>
         <div id="response"></div>
         <textarea id="openAIResponse" readonly></textarea>
-        <button id="sendToOpenAI">Send to OpenAI</button>
-        <button id="sendWriterDetailsToOpenAI">Send Writer Details to OpenAI</button>
+
+        
 
         <script>
             document.getElementById('writer').addEventListener('change', function() {
