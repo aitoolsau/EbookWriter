@@ -1,7 +1,9 @@
+import os
 import openai
 from config import openai_api_key
 
 openai.api_key = openai_api_key
+openai.organization = "org-ZQOf6hs159BbSTWZ6iPesyqm"
 
 def generate_text(prompt):
     response = openai.Completion.create(
