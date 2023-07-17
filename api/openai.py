@@ -7,7 +7,7 @@ openai.organization = "org-ZQOf6hs159BbSTWZ6iPesyqm"
 
 def generate_text(prompt):
     response = openai.Completion.create(
-      engine="davinci-codex",
+      engine="text-davinci-002",
       prompt=prompt,
       max_tokens=100
     )
