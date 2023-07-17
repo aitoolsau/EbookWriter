@@ -1,7 +1,7 @@
 import openai
-from config import api_key
+from config import openai_api_key
 
-openai.api_key = api_key
+openai.api_key = openai_api_key
 
 def generate_text(prompt):
     response = openai.Completion.create(
