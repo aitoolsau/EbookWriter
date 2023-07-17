@@ -14,6 +14,23 @@ app.config['MYSQL_DB'] = 'aitools_ebookwriter'
 
 mysql = MySQL(app)
 
+# Define a function to generate text using the OpenAI API
+def generate_text(prompt, model='text-davinci-002'):
+    # If the prompt is empty, use a default test prompt
+    if not prompt:
+        prompt = "Translate the following English text to French: '{}'"
+    
+    # Use the OpenAI API to generate text
+    response = openai.Completion.create(
+        engine=model,
+        prompt=prompt,
+        max_tokens=100
+    )
+
+    # Return the generated text
+    return response.choices[0].text.strip()
+
+
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -255,14 +272,21 @@ def edit_writer(WriterID):
         return redirect(url_for('writers'))
     else:
         return render_template('edit_writer.html', writer=writer)
+    
+
+
 @app.route('/api/sendToOpenAI', methods=['POST'])
 def send_to_openai():
+    # Get the prompt from the request body
     data = request.get_json()
     prompt = data.get('prompt')
-    # Assuming you have a function named `generate_text` in the `openai` module
-    # and it takes the model name as a second parameter
-    response = openai.generate_text(prompt, 'text-davinci-002')  
+
+    # Generate text using the OpenAI API
+    response = generate_text(prompt)
+
+    # Return the generated text in the response
     return jsonify({'response': response})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
