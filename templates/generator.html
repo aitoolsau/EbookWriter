@@ -22,6 +22,9 @@
         <textarea id="prompt" readonly></textarea>
         <button id="generate">Generate</button>
         <button id="sendToOpenAI">Send to OpenAI</button>
+        <div id="response"></div>
+        <textarea id="openAIResponse" readonly></textarea>
+        <button id="sendToOpenAI">Send to OpenAI</button>
         <button id="sendWriterDetailsToOpenAI">Send Writer Details to OpenAI</button>
 
         <script>
@@ -41,6 +44,7 @@
                 .then(data => {
                     document.getElementById('openAIResponse').value = data.response;
                 });
+            });
             document.getElementById('writer').addEventListener('change', function() {
                 var selectedOption = this.options[this.selectedIndex];
                 var writerDetails = document.getElementById('writerDetails');
