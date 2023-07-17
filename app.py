@@ -287,9 +287,6 @@ def send_to_openai():
     # Return the generated text in the response
     return jsonify({'response': response})
 
-@app.route('/test_ai')
-def test_ai():
-    return render_template('test_ai.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
