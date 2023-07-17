@@ -258,7 +258,9 @@ def edit_writer(WriterID):
 def send_to_openai():
     data = request.get_json()
     prompt = data.get('prompt')
-    response = openai.generate_text(prompt)  # Assuming you have a function named `generate_text` in the `openai` module
+    # Assuming you have a function named `generate_text` in the `openai` module
+    # and it takes the model name as a second parameter
+    response = openai.generate_text(prompt, 'text-davinci-002')  
     return jsonify({'response': response})
 
 if __name__ == '__main__':
