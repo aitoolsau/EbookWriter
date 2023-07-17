@@ -6,12 +6,16 @@ openai.api_key = openai_api_key
 openai.organization = "org-ZQOf6hs159BbSTWZ6iPesyqm"
 
 def generate_text(prompt):
-    response = openai.Completion.create(
-      engine="text-davinci-002",
-      prompt=prompt,
-      max_tokens=100
+    response = openai.ChatCompletion.create(
+      model="gpt-3.5-turbo",
+      messages=[
+        {
+          "role": "user",
+          "content": prompt
+        }
+      ]
     )
-    return response.choices[0].text.strip()
+    return response['choices'][0]['message']['content']
 
 # Test the function
 if __name__ == "__main__":
