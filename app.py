@@ -254,5 +254,12 @@ def edit_writer(WriterID):
         return redirect(url_for('writers'))
     else:
         return render_template('edit_writer.html', writer=writer)
+@app.route('/api/sendToOpenAI', methods=['POST'])
+def send_to_openai():
+    data = request.get_json()
+    prompt = data.get('prompt')
+    response = openai.generate_text(prompt)  # Assuming you have a function named `generate_text` in the `openai` module
+    return jsonify({'response': response})
+
 if __name__ == '__main__':
     app.run(debug=True)

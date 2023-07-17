@@ -20,14 +20,16 @@
         <br />
         <textarea id="prompt" readonly></textarea>
         <button id="generate">Generate</button>
+        <button id="sendToOpenAI">Send to OpenAI</button>
         <div id="response"></div>
+        <textarea id="openAIResponse" readonly></textarea>
         <script>
             document.getElementById('writer').addEventListener('change', function() {
             // existing code...
             });
-            document.getElementById('generate').addEventListener('click', function() {
+            document.getElementById('sendToOpenAI').addEventListener('click', function() {
                 var prompt = document.getElementById('prompt').value;
-                fetch('/api/generate', {
+                fetch('/api/sendToOpenAI', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -36,7 +38,7 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('response').innerText = data.response;
+                    document.getElementById('openAIResponse').value = data.response;
                 });
             });
                 var selectedOption = this.options[this.selectedIndex];
