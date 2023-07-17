@@ -18,9 +18,11 @@
             {% endfor %}
         </select>
         <br />
+        <textarea id="writerDetails" readonly></textarea>
         <textarea id="prompt" readonly></textarea>
         <button id="generate">Generate</button>
         <button id="sendToOpenAI">Send to OpenAI</button>
+        <button id="sendWriterDetailsToOpenAI">Send Writer Details to OpenAI</button>
 
         <script>
             document.getElementById('writer').addEventListener('change', function() {
@@ -39,17 +41,31 @@
                 .then(data => {
                     document.getElementById('openAIResponse').value = data.response;
                 });
-            });
+            document.getElementById('writer').addEventListener('change', function() {
                 var selectedOption = this.options[this.selectedIndex];
-                var prompt = document.getElementById('prompt');
-                prompt.value = "Task: " + selectedOption.getAttribute('data-task') +
-                               "\nTopic: " + selectedOption.getAttribute('data-topic') +
-                               "\nStyle: " + selectedOption.getAttribute('data-style') +
-                               "\nTone: " + selectedOption.getAttribute('data-tone') +
-                               "\nAudience: " + selectedOption.getAttribute('data-audience') +
-                               "\nLength: " + selectedOption.getAttribute('data-length') +
-                               "\nFormat: " + selectedOption.getAttribute('data-format') +
-                               "\nAdditional Information: " + selectedOption.getAttribute('data-additional-information');
+                var writerDetails = document.getElementById('writerDetails');
+                writerDetails.value = "Task: " + selectedOption.getAttribute('data-task') +
+                                      "\nTopic: " + selectedOption.getAttribute('data-topic') +
+                                      "\nStyle: " + selectedOption.getAttribute('data-style') +
+                                      "\nTone: " + selectedOption.getAttribute('data-tone') +
+                                      "\nAudience: " + selectedOption.getAttribute('data-audience') +
+                                      "\nLength: " + selectedOption.getAttribute('data-length') +
+                                      "\nFormat: " + selectedOption.getAttribute('data-format') +
+                                      "\nAdditional Information: " + selectedOption.getAttribute('data-additional-information');
+            });
+            document.getElementById('sendWriterDetailsToOpenAI').addEventListener('click', function() {
+                var writerDetails = document.getElementById('writerDetails').value;
+                fetch('/api/sendToOpenAI', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ prompt: writerDetails }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('openAIResponse').value = data.response;
+                });
             });
         </script>
 </body>
